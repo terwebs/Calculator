@@ -6,9 +6,10 @@ const allbtn = document.querySelectorAll('button')
 const displayNum = document.querySelector('#displayNum')
 const displayOp = document.querySelector("#displayOp")
 const sumBtn = document.querySelector("#sum")
-
 const minBtn = document.querySelector("#minus")
-
+const mulBtn = document.querySelector("#mult")
+const divBtn = document.querySelector("#div")
+const negativeBtn = document.querySelector("#negative")
 const numberButtons = document.querySelectorAll('#number')
 const equalBtn = document.querySelector("#result")
 const clearButtons = document.querySelectorAll("#clear")
@@ -56,16 +57,55 @@ minBtn.addEventListener('click', () => {
     return number1, operator
 })
 
+mulBtn.addEventListener('click', () => {
+    if(total === 0){
+        number1 = btnValue
+    } else{
+        number1 = total
+    }
+    displayOp.innerText = `${number1} * `
+    btnValue = ""
+    operator = "mul"
+    return number1, operator
+})
+
+divBtn.addEventListener('click', () => {
+    if(total === 0){
+        number1 = btnValue
+    } else{
+        number1 = total
+    }
+    displayOp.innerText = `${number1} ÷ `
+    btnValue = ""
+    operator = "div"
+    return number1, operator
+})
+
+
+negativeBtn.addEventListener('click', ()=> {
+    number1 = parseFloat(btnValue * -(1));
+    btnValue = (btnValue * -(1))
+    displayNum.innerText = `${number1}`
+    return number1
+})
 
 equalBtn.addEventListener('click', () => {
     if (operator === "sum"){
-        total = parseInt(number1) + parseInt(btnValue)
+        total = parseFloat(number1) + parseFloat(btnValue)
         displayOp.innerText = `${number1} + ${btnValue}`
         displayNum.innerText = total
     } 
     else if (operator === "min"){
-        total = parseInt(number1) - parseInt(btnValue)
+        total = parseFloat(number1) - parseFloat(btnValue)
         displayOp.innerText = `${number1} - ${btnValue}`
+        displayNum.innerText = total
+    } else if (operator === "mul"){
+        total = parseFloat(number1) * parseFloat(btnValue)
+        displayOp.innerText = `${number1} * ${btnValue}`
+        displayNum.innerText = total
+    }  else if (operator === "div"){
+        total = parseFloat(number1) / parseFloat(btnValue)
+        displayOp.innerText = `${number1} ÷ ${btnValue}`
         displayNum.innerText = total
     }  
 })
@@ -83,6 +123,8 @@ for (button of clearButtons){
         }
     })
 }
+
+
 
 const disableCalc = function(){
     for (button of allbtn){
