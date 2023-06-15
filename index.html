@@ -10,39 +10,41 @@
     <div class="main-container">
         <div class="calc-container">
             <div class="calc-screen">
-                <h2 class="display">0</h2>
+                <h4 id="displayOp" class="display-ops"> </h4>
+                <h2 id="displayNum" class="display">0</h2>
             </div>
             <div class="calc-row">
                 <button>%</button>
-                <button>CE</button>
-                <button>C</button>
-                <button>/</button>
+                <button id="clear">CE</button>
+                <button id="clear">C</button>
+                <button class="operator">/</button>
             </div>
             <div class="calc-row">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>x</button>
+                <button id="number">7</button>
+                <button id="number">8</button>
+                <button id="number">9</button>
+                <button class="operator">x</button>
             </div>
             <div class="calc-row">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
+                <button id="number">4</button>
+                <button id="number">5</button>
+                <button id="number">6</button>
+                <button class="operator">-</button>
             </div>
             <div class="calc-row">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
+                <button id="number">1</button>
+                <button id="number">2</button>
+                <button id="number">3</button>
+                <button class="operator" id="sum">+</button>
             </div>
             <div class="calc-row">
                 <button>+/-</button>
-                <button>0</button>
+                <button id="number">0</button>
                 <button>.</button>
-                <button class="equals">=</button>
+                <button id="result" class="equals">=</button>
             </div>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>
