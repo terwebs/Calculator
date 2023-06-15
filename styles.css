@@ -8,7 +8,7 @@
 
 .calc-container{
     width: 340px;
-    height: 300px;
+    height: 320px;
     background-color: rgb(32,32,32);
     display: flex;
     flex-direction: column;
@@ -29,10 +29,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 18px;
+    padding-top: 5px;;
 }
 
 .display{
+    align-self: flex-end;
     color: white;
     text-align: right;
     box-sizing: border-box;
@@ -42,6 +43,7 @@
 
 .display-ops{
  color: gray;  
+ min-height: 20px;
  text-align: right; 
  margin: 0;
 }
