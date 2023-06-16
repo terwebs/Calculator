@@ -158,6 +158,7 @@ for (button of clearButtons){
         btnValue = "";
         number1 = 0
         total = 0
+        operator = ''
         displayOp.innerText = ``
         displayNum.innerText = 0
         for (button of allbtn){
