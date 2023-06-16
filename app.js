@@ -122,32 +122,34 @@ percentBtn.addEventListener('click', () => {
 
 equalBtn.addEventListener('click', () => {
     
-    console.log('number1', number1)
-    // number1 = displayNum.innerText
     // console.log('number1', number1)
+    // // number1 = displayNum.innerText
+    // // console.log('number1', number1)
+
+    // console.log(`${displayOp.innerText} ${displayNum.innerText}`)
 
     if (operator === "sum"){
         total = parseFloat(number1) + parseFloat(btnValue)
-        displayOp.innerText = `${number1} + ${btnValue}`
+        displayOp.innerText = `${number1} + ${btnValue} = `
         
     } 
     else if (operator === "min"){
         total = parseFloat(number1) - parseFloat(btnValue)
-        displayOp.innerText = `${number1} - ${btnValue}`
+        displayOp.innerText = `${number1} - ${btnValue} =`
       
     } else if (operator === "mul"){
         total = parseFloat(number1) * parseFloat(btnValue)
-        displayOp.innerText = `${number1} * ${btnValue}`
+        displayOp.innerText = `${number1} * ${btnValue} =`
         
     }  else if (operator === "div"){
         total = parseFloat(number1) / parseFloat(btnValue)
-        displayOp.innerText = `${number1} ÷ ${btnValue}`
+        displayOp.innerText = `${number1} ÷ ${btnValue} =`
         
     }  else if (operator === "percent"){
         total = ((parseFloat(number1) / 100) * parseFloat(btnValue) )
-        displayOp.innerText = `${number1} % ${btnValue}`
+        displayOp.innerText = `${number1} % ${btnValue} =`
     }
-    console.log('total', total)
+    // console.log('total', total)
     displayNum.innerText = total
     btnValue = total
 })
