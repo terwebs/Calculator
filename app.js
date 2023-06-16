@@ -15,7 +15,7 @@ const numberButtons = document.querySelectorAll('#number')
 const equalBtn = document.querySelector("#result")
 const clearButtons = document.querySelectorAll("#clear")
 const backBtn = document.querySelector("#back")
-
+const percentBtn = document.querySelector("#percent")
 
 const getValue = (button) =>{
     button.addEventListener('click', ()=> {
@@ -108,6 +108,18 @@ backBtn.addEventListener('click', ()=> {
     
 })
 
+percentBtn.addEventListener('click', () => {
+    if(total === 0){
+        number1 = btnValue
+    } else{
+        number1 = displayNum.innerText
+    }
+    displayOp.innerText = `${number1} % `
+    btnValue = ""
+    operator = "percent"
+    return number1, operator
+})
+
 equalBtn.addEventListener('click', () => {
     
     console.log('number1', number1)
@@ -131,7 +143,10 @@ equalBtn.addEventListener('click', () => {
         total = parseFloat(number1) / parseFloat(btnValue)
         displayOp.innerText = `${number1} ÷ ${btnValue}`
         
-    }  
+    }  else if (operator === "percent"){
+        total = ((parseFloat(number1) / 100) * parseFloat(btnValue) )
+        displayOp.innerText = `${number1} % ${btnValue}`
+    }
     console.log('total', total)
     displayNum.innerText = total
     btnValue = total
