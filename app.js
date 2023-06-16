@@ -2,6 +2,7 @@ let btnValue = "";
 let operator = "";
 let number1 = 0;
 let total = 0;
+
 const allbtn = document.querySelectorAll('button')
 const displayNum = document.querySelector('#displayNum')
 const displayOp = document.querySelector("#displayOp")
@@ -13,13 +14,14 @@ const negativeBtn = document.querySelector("#negative")
 const numberButtons = document.querySelectorAll('#number')
 const equalBtn = document.querySelector("#result")
 const clearButtons = document.querySelectorAll("#clear")
+const backBtn = document.querySelector("#back")
 
-//getting the value of all buttons
+
 const getValue = (button) =>{
     button.addEventListener('click', ()=> {
         btnValue += button.innerText;   
         displayNum.innerText = btnValue;
-        console.log(btnValue)
+        // console.log(btnValue)
         if (displayNum.innerText.length > 6){
             displayOp.innerText = `You reached the limit - press C`
             disableCalc()
@@ -31,13 +33,17 @@ const getValue = (button) =>{
 
 for (button of numberButtons){
     getValue(button)
+    
 }
 
 sumBtn.addEventListener('click', () => {
+    console.log('btnvalue',btnValue)
+    console.log('displayu', displayNum.innerText)
+    console.log('total',total)
     if(total === 0){
         number1 = btnValue
     } else{
-        number1 = total
+        number1 = displayNum.innerText
     }
     displayOp.innerText = `${number1} + `
     btnValue = ""
@@ -49,7 +55,7 @@ minBtn.addEventListener('click', () => {
     if(total === 0){
         number1 = btnValue
     } else{
-        number1 = total
+        number1 = displayNum.innerText
     }
     displayOp.innerText = `${number1} - `
     btnValue = ""
@@ -61,7 +67,7 @@ mulBtn.addEventListener('click', () => {
     if(total === 0){
         number1 = btnValue
     } else{
-        number1 = total
+        number1 = displayNum.innerText
     }
     displayOp.innerText = `${number1} * `
     btnValue = ""
@@ -73,7 +79,7 @@ divBtn.addEventListener('click', () => {
     if(total === 0){
         number1 = btnValue
     } else{
-        number1 = total
+        number1 = displayNum.innerText
     }
     displayOp.innerText = `${number1} ÷ `
     btnValue = ""
@@ -83,31 +89,52 @@ divBtn.addEventListener('click', () => {
 
 
 negativeBtn.addEventListener('click', ()=> {
-    number1 = parseFloat(btnValue * -(1));
+    displayNum.innerText  = parseFloat(btnValue * -(1));
     btnValue = (btnValue * -(1))
-    displayNum.innerText = `${number1}`
-    return number1
+})
+
+backBtn.addEventListener('click', ()=> {
+    btnValue = btnValue.toString()
+    // console.log(btnValue, btnValue.length, typeof(btnValue))
+    
+    if (btnValue.length > 0){
+        btnValue = btnValue.slice(0,btnValue.length-1)
+        displayNum.innerText = btnValue
+    }  
+    if (btnValue === ''){
+        displayNum.innerText = 0;
+        btnValue = 0;
+    }  
+    
 })
 
 equalBtn.addEventListener('click', () => {
+    
+    console.log('number1', number1)
+    // number1 = displayNum.innerText
+    // console.log('number1', number1)
+
     if (operator === "sum"){
         total = parseFloat(number1) + parseFloat(btnValue)
         displayOp.innerText = `${number1} + ${btnValue}`
-        displayNum.innerText = total
+        
     } 
     else if (operator === "min"){
         total = parseFloat(number1) - parseFloat(btnValue)
         displayOp.innerText = `${number1} - ${btnValue}`
-        displayNum.innerText = total
+      
     } else if (operator === "mul"){
         total = parseFloat(number1) * parseFloat(btnValue)
         displayOp.innerText = `${number1} * ${btnValue}`
-        displayNum.innerText = total
+        
     }  else if (operator === "div"){
         total = parseFloat(number1) / parseFloat(btnValue)
         displayOp.innerText = `${number1} ÷ ${btnValue}`
-        displayNum.innerText = total
+        
     }  
+    console.log('total', total)
+    displayNum.innerText = total
+    btnValue = total
 })
 
 
